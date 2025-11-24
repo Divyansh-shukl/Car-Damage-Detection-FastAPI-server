@@ -4,6 +4,6 @@ Pillow
 numpy
 requests
 
---index-url https://download.pytorch.org/whl/cpu
-torch==2.6.0
-torchvision==0.21.0
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.6.0+cpu
+torchvision==0.21.0+cpu
