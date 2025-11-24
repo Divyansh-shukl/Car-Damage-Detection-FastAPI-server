@@ -1,6 +1,7 @@
 import torch
 from torch import nn
 from torchvision import models, transforms
+from torchvision.models import ResNet50_Weights
 from PIL import Image
 import os
 
@@ -17,7 +18,7 @@ MODEL_PATH = os.path.join(BASE_DIR, "model", "saved_model.pth")
 class CarClassifierResNet(nn.Module):
     def __init__(self, num_classes=6):
         super().__init__()
-        self.model = models.resnet50(weights='None')
+        self.model = models.resnet50(weights=None)
 
         for param in self.model.parameters():
             param.requires_grad = False
