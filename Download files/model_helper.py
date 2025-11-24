@@ -5,6 +5,8 @@ import torch
 from torch import nn
 from torchvision import models, transforms
 from PIL import Image
+from torchvision.models import ResNet50_Weights
+
 
 logger = logging.getLogger("uvicorn.error")  # Render's logs via uvicorn
 
@@ -26,7 +28,8 @@ class CarClassifierResNet(nn.Module):
         # IMPORTANT: pass the Python None value (not the string 'None').
         # This constructs the ResNet architecture WITHOUT attempting to
         # download pretrained ImageNet weights.
-        self.model = models.resnet50(weights=None)
+        self.model = models.resnet50(weights=ResNet50_Weights.IMAGENET1K_V2)
+        
 
         # Freeze all params, then unfreeze layer4 (if desired)
         for param in self.model.parameters():
